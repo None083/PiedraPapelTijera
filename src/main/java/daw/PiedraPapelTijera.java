@@ -21,10 +21,10 @@ public class PiedraPapelTijera {
         int parseOpcionModo = 0;
         boolean errorNumberFormat = false;
         int randomJugador;
-        
+
         Random random = new Random();
         Scanner teclado = new Scanner(System.in);
-        
+
         do {
             do {
                 try {
@@ -59,27 +59,60 @@ public class PiedraPapelTijera {
                 jugador1 = JOptionPane.showInputDialog("Introduce el nombre del jugador 1");
                 jugador2 = JOptionPane.showInputDialog("Introduce el nombre del jugador 2");
                 randomJugador = random.nextInt(1, 3);
-                
+
                 String opcionesPPT = """
-                                          ESCOJA UNA OPCIÓN
-                                     ---------------------------
+                                          ESCRIBA UNA OPCIÓN
+                                     ----------------------------
                                      
-                                            - Piedra
+                                             - Piedra
                                      
-                                            - Papel
+                                             - Papel
                                      
-                                            - Tijera
+                                             - Tijera
                                      
-                                     ---------------------------
+                                     ----------------------------
                                      """;
-                
-                if(randomJugador == 1){
-                    System.out.println("Comienza " + jugador1 + ":");
-                    String opcionJugador1 = teclado.nextLine();
-                    System.out.println("Escoje " + jugador2 + ":");
-                    String opcionJugador2 = teclado.nextLine();
+                String opcionJugador1;
+                String opcionJugador2;
+
+                if (randomJugador == 1) {
+                    do {
+                        System.out.println("Comienza " + jugador1 + ":");
+                        opcionJugador1 = teclado.nextLine();
+                    } while (!(opcionJugador1.equalsIgnoreCase("Piedra")
+                            || opcionJugador1.equalsIgnoreCase("Papel")
+                            || opcionJugador1.equalsIgnoreCase("Tijera")));
+
+                    do {
+                        System.out.println("Escoje " + jugador2 + ":");
+                        opcionJugador2 = teclado.nextLine();
+                    } while (!(opcionJugador2.equalsIgnoreCase("Piedra")
+                            || opcionJugador2.equalsIgnoreCase("Papel")
+                            || opcionJugador2.equalsIgnoreCase("Tijera")));
+
+                } else {
+                    do {
+                        System.out.println("Comienza " + jugador2 + ":");
+                        opcionJugador2 = teclado.nextLine();
+                    } while (!(opcionJugador2.equalsIgnoreCase("Piedra")
+                            || opcionJugador2.equalsIgnoreCase("Papel")
+                            || opcionJugador2.equalsIgnoreCase("Tijera")));
+
+                    do {
+                        System.out.println("Escoje " + jugador1 + ":");
+                        opcionJugador1 = teclado.nextLine();
+                    } while (!(opcionJugador1.equalsIgnoreCase("Piedra")
+                            || opcionJugador1.equalsIgnoreCase("Papel")
+                            || opcionJugador1.equalsIgnoreCase("Tijera")));
                 }
-                
+                if (!(opcionJugador1.equalsIgnoreCase("Piedra")
+                        || opcionJugador1.equalsIgnoreCase("Papel")
+                        || opcionJugador1.equalsIgnoreCase("Tijera"))
+                        || !(opcionJugador2.equalsIgnoreCase("Piedra")
+                        || opcionJugador2.equalsIgnoreCase("Papel")
+                        || opcionJugador2.equalsIgnoreCase("Tijera"))) {
+                    System.out.println("Esa opción no es válida, escribe una de la lista");
+                }
             }
         }
 
