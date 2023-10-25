@@ -15,7 +15,7 @@ public class PiedraPapelTijera {
 
     public static void main(String[] args) {
 
-        final int NUMERO_RONDAS = 5;
+        int contadorRonda = 0;
         String opcionModo;
         String nombreJugador1;
         String nombreJugador2;
@@ -56,18 +56,17 @@ public class PiedraPapelTijera {
 
             } while (errorNumberFormat);
 
-        } while (!(parseOpcionModo >= 1 && parseOpcionModo <= 3));
+            switch (parseOpcionModo) {
+                case 1 -> {
+                    nombreJugador1 = JOptionPane.showInputDialog(
+                            "Introduce el nombre del jugador 1");
+                    nombreJugador2 = JOptionPane.showInputDialog(
+                            "Introduce el nombre del jugador 2");
+                    randomJugador = random.nextInt(1, 3);
 
-        switch (parseOpcionModo) {
-            case 1 -> {
-                nombreJugador1 = JOptionPane.showInputDialog(
-                        "Introduce el nombre del jugador 1");
-                nombreJugador2 = JOptionPane.showInputDialog(
-                        "Introduce el nombre del jugador 2");
-                randomJugador = random.nextInt(1, 3);
-
-                for (int i = 0; i < NUMERO_RONDAS; i++) {
-                    System.out.println("""
+                    do {
+                        contadorRonda++;
+                        System.out.println("""
                                           ESCRIBA UNA OPCIÓN
                                      ----------------------------
                                      
@@ -78,114 +77,129 @@ public class PiedraPapelTijera {
                                      ----------------------------
                                      """);
 
-                    String opcionJugador1;
-                    String opcionJugador2;
+                        String opcionJugador1;
+                        String opcionJugador2;
 
-                    System.out.println("Ronda " + (i + 1));
+                        System.out.println("Ronda " + contadorRonda);
 
-                    if (randomJugador == 1) {
-                        do {
-                            System.out.println("Comienza " + nombreJugador1 + ":");
-                            opcionJugador1 = teclado.nextLine();
+                        if (randomJugador == 1) {
+                            do {
+                                System.out.println("Comienza " + nombreJugador1 + ":");
+                                opcionJugador1 = teclado.nextLine();
 
-                            if (!(opcionJugador1.equalsIgnoreCase("Piedra")
+                                if (!(opcionJugador1.equalsIgnoreCase("Piedra")
+                                        || opcionJugador1.equalsIgnoreCase("Papel")
+                                        || opcionJugador1.equalsIgnoreCase("Tijera"))) {
+                                    System.out.println("Esa opción no es válida, escribe una de la lista");
+                                }
+                            } while (!(opcionJugador1.equalsIgnoreCase("Piedra")
                                     || opcionJugador1.equalsIgnoreCase("Papel")
-                                    || opcionJugador1.equalsIgnoreCase("Tijera"))) {
-                                System.out.println("Esa opción no es válida, escribe una de la lista");
-                            }
-                        } while (!(opcionJugador1.equalsIgnoreCase("Piedra")
-                                || opcionJugador1.equalsIgnoreCase("Papel")
-                                || opcionJugador1.equalsIgnoreCase("Tijera")));
+                                    || opcionJugador1.equalsIgnoreCase("Tijera")));
 
-                        do {
-                            System.out.println("Escoje " + nombreJugador2 + ":");
-                            opcionJugador2 = teclado.nextLine();
+                            do {
+                                System.out.println("Escoge " + nombreJugador2 + ":");
+                                opcionJugador2 = teclado.nextLine();
 
-                            if (!(opcionJugador2.equalsIgnoreCase("Piedra")
+                                if (!(opcionJugador2.equalsIgnoreCase("Piedra")
+                                        || opcionJugador2.equalsIgnoreCase("Papel")
+                                        || opcionJugador2.equalsIgnoreCase("Tijera"))) {
+                                    System.out.println("Esa opción no es válida, escribe una de la lista");
+                                }
+                            } while (!(opcionJugador2.equalsIgnoreCase("Piedra")
                                     || opcionJugador2.equalsIgnoreCase("Papel")
-                                    || opcionJugador2.equalsIgnoreCase("Tijera"))) {
-                                System.out.println("Esa opción no es válida, escribe una de la lista");
-                            }
-                        } while (!(opcionJugador2.equalsIgnoreCase("Piedra")
-                                || opcionJugador2.equalsIgnoreCase("Papel")
-                                || opcionJugador2.equalsIgnoreCase("Tijera")));
+                                    || opcionJugador2.equalsIgnoreCase("Tijera")));
 
-                    } else {
-                        do {
-                            System.out.println("Comienza " + nombreJugador2 + ":");
-                            opcionJugador2 = teclado.nextLine();
+                        } else {
+                            do {
+                                System.out.println("Comienza " + nombreJugador2 + ":");
+                                opcionJugador2 = teclado.nextLine();
 
-                            if (!(opcionJugador2.equalsIgnoreCase("Piedra")
+                                if (!(opcionJugador2.equalsIgnoreCase("Piedra")
+                                        || opcionJugador2.equalsIgnoreCase("Papel")
+                                        || opcionJugador2.equalsIgnoreCase("Tijera"))) {
+                                    System.out.println("Esa opción no es válida, escribe una de la lista");
+                                }
+                            } while (!(opcionJugador2.equalsIgnoreCase("Piedra")
                                     || opcionJugador2.equalsIgnoreCase("Papel")
-                                    || opcionJugador2.equalsIgnoreCase("Tijera"))) {
-                                System.out.println("Esa opción no es válida, escribe una de la lista");
-                            }
-                        } while (!(opcionJugador2.equalsIgnoreCase("Piedra")
-                                || opcionJugador2.equalsIgnoreCase("Papel")
-                                || opcionJugador2.equalsIgnoreCase("Tijera")));
+                                    || opcionJugador2.equalsIgnoreCase("Tijera")));
 
-                        do {
-                            System.out.println("Escoje " + nombreJugador1 + ":");
-                            opcionJugador1 = teclado.nextLine();
+                            do {
+                                System.out.println("Escoge " + nombreJugador1 + ":");
+                                opcionJugador1 = teclado.nextLine();
 
-                            if (!(opcionJugador1.equalsIgnoreCase("Piedra")
+                                if (!(opcionJugador1.equalsIgnoreCase("Piedra")
+                                        || opcionJugador1.equalsIgnoreCase("Papel")
+                                        || opcionJugador1.equalsIgnoreCase("Tijera"))) {
+                                    System.out.println("Esa opción no es válida, escribe una de la lista");
+                                }
+                            } while (!(opcionJugador1.equalsIgnoreCase("Piedra")
                                     || opcionJugador1.equalsIgnoreCase("Papel")
-                                    || opcionJugador1.equalsIgnoreCase("Tijera"))) {
-                                System.out.println("Esa opción no es válida, escribe una de la lista");
-                            }
-                        } while (!(opcionJugador1.equalsIgnoreCase("Piedra")
-                                || opcionJugador1.equalsIgnoreCase("Papel")
-                                || opcionJugador1.equalsIgnoreCase("Tijera")));
+                                    || opcionJugador1.equalsIgnoreCase("Tijera")));
 
-                    }
-                    if ((opcionJugador1.equalsIgnoreCase("Papel")
-                            && opcionJugador2.equalsIgnoreCase("Piedra"))
-                            || (opcionJugador1.equalsIgnoreCase("Piedra")
-                            && opcionJugador2.equalsIgnoreCase("Tijera"))
-                            || (opcionJugador1.equalsIgnoreCase("Tijera")
-                            && opcionJugador2.equalsIgnoreCase("Papel"))) {
+                        }
+                        if ((opcionJugador1.equalsIgnoreCase("Papel")
+                                && opcionJugador2.equalsIgnoreCase("Piedra"))
+                                || (opcionJugador1.equalsIgnoreCase("Piedra")
+                                && opcionJugador2.equalsIgnoreCase("Tijera"))
+                                || (opcionJugador1.equalsIgnoreCase("Tijera")
+                                && opcionJugador2.equalsIgnoreCase("Papel"))) {
 
-                        contadorJugador1++;
-                        System.out.println("""
+                            contadorJugador1++;
+                            System.out.println("""
                                        
                                        %s ha sacado: %s
                                        %s ha sacado: %s
                                        Punto para: %s
+                                       %s %d - %s %d
                                        
                                        """.formatted(nombreJugador1, opcionJugador1,
-                                nombreJugador2, opcionJugador2,
-                                nombreJugador1));
-                    } else {
-                        contadorJugador2++;
-                        System.out.println("""
+                                    nombreJugador2, opcionJugador2,nombreJugador1, 
+                                    nombreJugador1, contadorJugador1,
+                                    nombreJugador2, contadorJugador2));
+                        } else if (opcionJugador1.equalsIgnoreCase(opcionJugador2)) {
+                            System.out.println("""
+                                       
+                                       %s ha sacado: %s
+                                       %s ha sacado: %s
+                                       Ha habido empate, nadie recibe punto
+                                       %s %d - %s %d
+                                       
+                                       """.formatted(nombreJugador1, opcionJugador1,
+                                    nombreJugador2, opcionJugador2, nombreJugador1,
+                                    contadorJugador1,nombreJugador2, contadorJugador2));
+                        } else {
+                            contadorJugador2++;
+                            System.out.println("""
                                        
                                        %s ha sacado: %s
                                        %s ha sacado: %s
                                        Punto para: %s
+                                       %s %d - %s %d
                                        
                                        """.formatted(nombreJugador1, opcionJugador1,
-                                nombreJugador2, opcionJugador2,
-                                nombreJugador2));
+                                    nombreJugador2, opcionJugador2,nombreJugador2, 
+                                    nombreJugador1, contadorJugador1,
+                                    nombreJugador2, contadorJugador2));
+                        }
+                    } while (!((contadorRonda >= 5 && (contadorJugador1 > contadorJugador2
+                            || contadorJugador2 > contadorJugador1))
+                            || (contadorJugador1 == 3 || contadorJugador2 == 3)));
+
+                    if (contadorJugador1 > contadorJugador2) {
+                        System.out.println("Ha ganado: " + nombreJugador1 + ", ¡¡ENHORABUENA!!");
+                    } else {
+                        System.out.println("Ha ganado: " + nombreJugador2 + ", ¡¡ENHORABUENA!!");
                     }
-                    if (contadorJugador1 == 3 || contadorJugador2 == 3) {
-                        break;
-                    }
+
                 }
+                case 2 -> {
+                    nombreJugador1 = JOptionPane.showInputDialog(
+                            "Introduce el nombre del jugador 1");
+                    randomJugador = random.nextInt(1, 3);
 
-                if (contadorJugador1 > contadorJugador2) {
-                    System.out.println("Ha ganado: " + nombreJugador1 + ", ¡¡ENHORABUENA!!");
-                } else {
-                    System.out.println("Ha ganado: " + nombreJugador2 + ", ¡¡ENHORABUENA!!");
-                }
-
-            }
-            case 2 -> {
-                nombreJugador1 = JOptionPane.showInputDialog(
-                        "Introduce el nombre del jugador 1");
-                randomJugador = random.nextInt(1, 3);
-
-                for (int i = 0; i < NUMERO_RONDAS; i++) {
-                    System.out.println("""
+                    do {
+                        contadorRonda++;
+                        System.out.println("""
                                           ESCRIBA UNA OPCIÓN
                                      ----------------------------
                                      
@@ -196,109 +210,126 @@ public class PiedraPapelTijera {
                                      ----------------------------
                                      """);
 
-                    String opcionJugador1;
-                    String opcionMaquina = "";
-                    int randomMaquina = random.nextInt(1, 4);
+                        String opcionJugador1;
+                        String opcionMaquina = "";
+                        int randomMaquina = random.nextInt(1, 4);
 
-                    System.out.println("Ronda " + (i + 1));
+                        System.out.println("Ronda " + contadorRonda);
 
-                    if (randomJugador == 1) {
-                        do {
-                            System.out.println("Comienza " + nombreJugador1 + ":");
-                            opcionJugador1 = teclado.nextLine();
+                        if (randomJugador == 1) {
+                            do {
+                                System.out.println("Comienza " + nombreJugador1 + ":");
+                                opcionJugador1 = teclado.nextLine();
 
-                            if (!(opcionJugador1.equalsIgnoreCase("Piedra")
+                                if (!(opcionJugador1.equalsIgnoreCase("Piedra")
+                                        || opcionJugador1.equalsIgnoreCase("Papel")
+                                        || opcionJugador1.equalsIgnoreCase("Tijera"))) {
+                                    System.out.println("Esa opción no es válida, escribe una de la lista");
+                                }
+                            } while (!(opcionJugador1.equalsIgnoreCase("Piedra")
                                     || opcionJugador1.equalsIgnoreCase("Papel")
-                                    || opcionJugador1.equalsIgnoreCase("Tijera"))) {
-                                System.out.println("Esa opción no es válida, escribe una de la lista");
-                            }
-                        } while (!(opcionJugador1.equalsIgnoreCase("Piedra")
-                                || opcionJugador1.equalsIgnoreCase("Papel")
-                                || opcionJugador1.equalsIgnoreCase("Tijera")));
+                                    || opcionJugador1.equalsIgnoreCase("Tijera")));
 
-                        switch (randomMaquina) {
-                            case 1 -> {
-                                opcionMaquina = "Piedra";
+                            switch (randomMaquina) {
+                                case 1 -> {
+                                    opcionMaquina = "Piedra";
+                                }
+                                case 2 -> {
+                                    opcionMaquina = "Papel";
+                                }
+                                case 3 -> {
+                                    opcionMaquina = "Tijera";
+                                }
                             }
-                            case 2 -> {
-                                opcionMaquina = "Papel";
+                            System.out.println("La Máquina ha escogido");
+                        } else {
+                            switch (randomMaquina) {
+                                case 1 -> {
+                                    opcionMaquina = "Piedra";
+                                }
+                                case 2 -> {
+                                    opcionMaquina = "Papel";
+                                }
+                                case 3 -> {
+                                    opcionMaquina = "Tijera";
+                                }
                             }
-                            case 3 -> {
-                                opcionMaquina = "Tijera";
-                            }
-                        }
-                        System.out.println("La Máquina ha escogido");
-                    } else {
-                        switch (randomMaquina) {
-                            case 1 -> {
-                                opcionMaquina = "Piedra";
-                            }
-                            case 2 -> {
-                                opcionMaquina = "Papel";
-                            }
-                            case 3 -> {
-                                opcionMaquina = "Tijera";
-                            }
-                        }
-                        System.out.println("La Máquina ha escogido");
+                            System.out.println("La Máquina ha escogido");
 
-                        do {
-                            System.out.println("Escoge " + nombreJugador1 + ":");
-                            opcionJugador1 = teclado.nextLine();
+                            do {
+                                System.out.println("Escoge " + nombreJugador1 + ":");
+                                opcionJugador1 = teclado.nextLine();
 
-                            if (!(opcionJugador1.equalsIgnoreCase("Piedra")
+                                if (!(opcionJugador1.equalsIgnoreCase("Piedra")
+                                        || opcionJugador1.equalsIgnoreCase("Papel")
+                                        || opcionJugador1.equalsIgnoreCase("Tijera"))) {
+                                    System.out.println("Esa opción no es válida, escribe una de la lista");
+                                }
+                            } while (!(opcionJugador1.equalsIgnoreCase("Piedra")
                                     || opcionJugador1.equalsIgnoreCase("Papel")
-                                    || opcionJugador1.equalsIgnoreCase("Tijera"))) {
-                                System.out.println("Esa opción no es válida, escribe una de la lista");
-                            }
-                        } while (!(opcionJugador1.equalsIgnoreCase("Piedra")
-                                || opcionJugador1.equalsIgnoreCase("Papel")
-                                || opcionJugador1.equalsIgnoreCase("Tijera")));
-                    }
+                                    || opcionJugador1.equalsIgnoreCase("Tijera")));
+                        }
 
-                    if ((opcionJugador1.equalsIgnoreCase("Papel")
-                            && opcionMaquina.equalsIgnoreCase("Piedra"))
-                            || (opcionJugador1.equalsIgnoreCase("Piedra")
-                            && opcionMaquina.equalsIgnoreCase("Tijera"))
-                            || (opcionJugador1.equalsIgnoreCase("Tijera")
-                            && opcionMaquina.equalsIgnoreCase("Papel"))) {
+                        if ((opcionJugador1.equalsIgnoreCase("Papel")
+                                && opcionMaquina.equalsIgnoreCase("Piedra"))
+                                || (opcionJugador1.equalsIgnoreCase("Piedra")
+                                && opcionMaquina.equalsIgnoreCase("Tijera"))
+                                || (opcionJugador1.equalsIgnoreCase("Tijera")
+                                && opcionMaquina.equalsIgnoreCase("Papel"))) {
 
-                        contadorJugador1++;
-                        System.out.println("""
+                            contadorJugador1++;
+                            System.out.println("""
                                        
                                        %s ha sacado: %s
                                        La máquina ha sacado: %s
                                        Punto para: %s
+                                       %s %d - La Máquina %d
                                        
                                        """.formatted(nombreJugador1, opcionJugador1,
-                                opcionMaquina, nombreJugador1));
-                    } else {
-                        contadorMaquina++;
-                        System.out.println("""
+                                    opcionMaquina, nombreJugador1, nombreJugador1,
+                                    contadorJugador1, contadorMaquina));
+                        } else if (opcionJugador1.equalsIgnoreCase(opcionMaquina)) {
+                            System.out.println("""
+                                       
+                                       %s ha sacado: %s
+                                       La máquina ha sacado: %s
+                                       Ha habido empate, nadie recibe punto
+                                       %s %d - La Máquina %d
+                                       
+                                       """.formatted(nombreJugador1, opcionJugador1,
+                                    opcionMaquina, nombreJugador1,
+                                    contadorJugador1, contadorMaquina));
+                        } else {
+                            contadorMaquina++;
+                            System.out.println("""
                                        
                                        %s ha sacado: %s
                                        La Máquina ha sacado: %s
                                        Punto para: La Máquina
+                                       %s %d - La Máquina %d
                                        
                                        """.formatted(nombreJugador1, opcionJugador1,
-                                opcionMaquina));
-                    }
-                    if (contadorJugador1 == 3 || contadorMaquina == 3) {
-                        break;
-                    }
+                                    opcionMaquina, nombreJugador1,
+                                    contadorJugador1, contadorMaquina));
+                        }
+                    } while (!((contadorRonda >= 5 && (contadorJugador1 > contadorMaquina
+                            || contadorMaquina > contadorJugador1))
+                            || (contadorJugador1 == 3 || contadorMaquina == 3)));
 
-                    if (contadorJugador1 > contadorJugador2) {
+                    if (contadorJugador1 > contadorMaquina) {
                         System.out.println("Ha ganado: " + nombreJugador1 + ". ¡¡ENHORABUENA!!");
                     } else {
                         System.out.println("Ha ganado: La Máquina. La vida es dura");
                     }
                 }
+                case 3 -> {
+                    System.out.println("Chao pescao");
+                }
             }
-            case 3 -> {
-                System.out.println("Chao pescao");
-                break;
+            if (!(parseOpcionModo >= 1 && parseOpcionModo <= 3)) {
+                JOptionPane.showMessageDialog(null, "Elige un número de la lista");
             }
-        }
+        } while (!(parseOpcionModo == 3));
 
     }
 }
