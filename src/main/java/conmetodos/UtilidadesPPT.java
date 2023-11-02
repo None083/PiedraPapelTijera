@@ -4,6 +4,7 @@
  */
 package conmetodos;
 
+import java.util.Random;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
@@ -52,6 +53,29 @@ public class UtilidadesPPT {
                 "Introduce el nombre del jugador 1");
         jugador2 = JOptionPane.showInputDialog(
                 "Introduce el nombre del jugador 2");
+    }
+
+    public static int quienEmpieza(int numJugadores) {
+        Random random = new Random();
+        return random.nextInt(1, (numJugadores + 1));
+    }
+
+    public static String escogeMaquina() {
+        Random random = new Random();
+        int randomMaquina = random.nextInt(1, 4);
+        String opcionMaquina = "";
+        switch (randomMaquina) {
+            case 1 -> {
+                opcionMaquina = "Piedra";
+            }
+            case 2 -> {
+                opcionMaquina = "Papel";
+            }
+            case 3 -> {
+                opcionMaquina = "Tijera";
+            }
+        }
+        return opcionMaquina;
     }
 
 }

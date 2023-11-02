@@ -3,8 +3,6 @@
  */
 package conmetodos;
 
-import daw.*;
-import java.util.Random;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
@@ -16,17 +14,18 @@ public class PiedraPapelTijera {
 
     public static void main(String[] args) {
 
+        //Constantes
+        final int numJugadores = 2;
+        
         //Variables
         int opcionJuego;
         int contadorRonda = 0;
         String nombreJugador1="";
         String nombreJugador2="";
-        int randomJugador;
         int contadorJugador1 = 0;
         int contadorJugador2 = 0;
         int contadorMaquina = 0;
 
-        Random random = new Random();
         Scanner teclado = new Scanner(System.in);
         do {
             opcionJuego = UtilidadesPPT.opcionMenuJuego();
@@ -35,7 +34,7 @@ public class PiedraPapelTijera {
             switch (opcionJuego) {
                 case 1 -> {
                     UtilidadesPPT.introducirNombre(nombreJugador1, nombreJugador2);
-                    randomJugador = random.nextInt(1, 3);
+                    int empiezaPor = UtilidadesPPT.quienEmpieza(numJugadores);
 
                     //Do-while para la condición de fin de partida
                     //Más abajo lo explico (donde está la condición)
@@ -60,7 +59,7 @@ public class PiedraPapelTijera {
                         //Si el random saca 1, empieza eligiendo el jugador1
                         //todas las rondas de la partida
                         //Si saca 2, empezará el jugador2
-                        if (randomJugador == 1) {
+                        if (empiezaPor == 1) {
                             //Do-while para repetir el menú de escoger objeto 
                             //si no introduces piedra, papel o tijera
                             do {
@@ -188,7 +187,7 @@ public class PiedraPapelTijera {
                 case 2 -> {
                     nombreJugador1 = JOptionPane.showInputDialog(
                             "Introduce el nombre del jugador 1");
-                    randomJugador = random.nextInt(1, 3);
+                    int empiezaPor = UtilidadesPPT.quienEmpieza(numJugadores);
 
                     do {
                         contadorRonda++;
@@ -204,12 +203,12 @@ public class PiedraPapelTijera {
                                      """);
 
                         String opcionJugador1;
-                        String opcionMaquina = "";
-                        int randomMaquina = random.nextInt(1, 4);
+                        String opcionMaquina = UtilidadesPPT.escogeMaquina();
+
 
                         System.out.println("Ronda " + contadorRonda);
 
-                        if (randomJugador == 1) {
+                        if (empiezaPor == 1) {
                             do {
                                 System.out.println("Comienza " + nombreJugador1 + ":");
                                 opcionJugador1 = teclado.nextLine();
@@ -223,31 +222,9 @@ public class PiedraPapelTijera {
                                     || opcionJugador1.equalsIgnoreCase("Papel")
                                     || opcionJugador1.equalsIgnoreCase("Tijera")));
 
-                            //Switch para el random de la máquina
-                            switch (randomMaquina) {
-                                case 1 -> {
-                                    opcionMaquina = "Piedra";
-                                }
-                                case 2 -> {
-                                    opcionMaquina = "Papel";
-                                }
-                                case 3 -> {
-                                    opcionMaquina = "Tijera";
-                                }
-                            }
                             System.out.println("La Máquina ha escogido");
+                            
                         } else {
-                            switch (randomMaquina) {
-                                case 1 -> {
-                                    opcionMaquina = "Piedra";
-                                }
-                                case 2 -> {
-                                    opcionMaquina = "Papel";
-                                }
-                                case 3 -> {
-                                    opcionMaquina = "Tijera";
-                                }
-                            }
                             System.out.println("La Máquina ha escogido");
 
                             do {
